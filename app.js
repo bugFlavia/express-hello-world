@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
+const axios = require("axios");
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
@@ -15,6 +16,18 @@ app.get('/req', (req, res) => {
 app.get("/meunome", (req, res) => res.type('html').send(nome));
 
 app.get("/tico", (req, res) => res.type('html').send(teco));
+
+app.get("/pokemons", async (req, res) => {
+  try {
+    const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=10");
+    const pokemons = response.data.results.map((pokemon) => pokemon.name);
+
+    res.json({ pokemons });
+  } catch (error) {
+    console.error("Error fetching pokemons:", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
