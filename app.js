@@ -14,6 +14,8 @@ app.get('/req', (req, res) => {
 
 app.get("/meunome", (req, res) => res.type('html').send(nome));
 
+app.get("/tico", (req, res) => res.type('html').send(teco));
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 
@@ -75,5 +77,15 @@ const nome = `<!DOCTYPE html>
   </head>
   <body>
   <center><h1 style="color:pink;">Flavia Nunes Barboza de Morais</h1></center>
+  </body>
+</html>`
+
+const teco = `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teco</title>
+  </head>
+  <body>
+  <center><h1 style="color:pink;">Teco</h1></center>
   </body>
 </html>`
