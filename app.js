@@ -12,6 +12,8 @@ app.get('/req', (req, res) => {
     res.send('Yo!')
 })
 
+app.get("/meunome", (req, res) => res.type('html').send(nome));
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 
@@ -65,3 +67,13 @@ const html = `
   </body>
 </html>
 `
+
+const nome = `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Name</title>
+  </head>
+  <body>
+  <center><h1 style="color:pink;">Flavia Nunes Barboza de Morais</h1></center>
+  </body>
+</html>`
